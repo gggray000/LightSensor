@@ -1,0 +1,36 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@font-face {
+    font-family: 'Rift-Regular';
+    src: url("../fonts/RIFT/Rift-Regular.ttf");
+}
+@font-face {
+    font-family: 'Rift-Medium';
+    src: url("../fonts/RIFT/Rift-Medium.otf");
+}
+@font-face {
+    font-family: 'Rift-Bold';
+    src: url("../fonts/RIFT/Rift-Bold.ttf");
+}
+@font-face {
+    font-family: 'Rift-Italic';
+    src: url("../fonts/RIFT/Rift Italic.otf");
+}
+@font-face {
+    font-family: 'Rift-BoldItalic';
+    src: url("../fonts/RIFT/Rift Bold Italic.otf");
+}
+
+@keyframes blink {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.6;
+  }
+}
+
+.blink {
+  animation: blink 5s infinite;
+}
