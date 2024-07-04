@@ -7,7 +7,7 @@ def init_db():
         CREATE TABLE IF NOT EXISTS light (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
             light_detected INTEGER NOT NULL,
-            timestamp DATE DEFAULT (datetime('now','localtime'))
+            timestamp DATE DEFAULT (datetime('now'))
         )
     ''')
     conn.commit()
