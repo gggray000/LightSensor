@@ -16,7 +16,7 @@ def add_brightness():
         conn = connect_db()
         cursor = conn.cursor()
         cursor.execute('INSERT INTO light (light_detected) VALUES (?)', (light_detected,))
-        # cursor.execute('DELETE FROM light WHERE id = (SELECT id FROM light ORDER BY timestamp ASC LIMIT 1)')
+        cursor.execute('DELETE FROM light WHERE id = (SELECT id FROM light ORDER BY timestamp ASC LIMIT 1)')
         conn.commit()
         conn.close()
         return jsonify({'status': 'success'})
