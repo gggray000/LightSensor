@@ -23,6 +23,7 @@ def add_brightness():
 def get_data():
     conn = connect_db()
     cursor = conn.cursor()
+    cursor.execute('DELETE FROM light WHERE id = (SELECT id FROM light ORDER BY timestamp ASC LIMIT 1)')
     cursor.execute('SELECT light_detected, timestamp FROM light ORDER BY timestamp DESC LIMIT 1')
     row = cursor.fetchone()
     conn.close()
