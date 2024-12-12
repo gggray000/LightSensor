@@ -12,7 +12,7 @@ def connect_db():
 @app.route('/add', methods=['POST'])
 def add_brightness():
     light_detected = request.json['light_detected']
-    try:         #cursor.execute('DELETE FROM light WHERE id = (SELECT id FROM light ORDER BY timestamp ASC LIMIT 1)')
+    try:
         conn = connect_db()
         cursor = conn.cursor()
         cursor.execute('INSERT INTO light (light_detected) VALUES (?)', (light_detected,))
