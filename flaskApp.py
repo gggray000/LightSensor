@@ -9,19 +9,6 @@ CORS(app)
 def connect_db():
     return sqlite3.connect('light_data.db')
 
-def cleanup_old_data():
-    try:
-        with connect_db() as conn:
-            with conn.cursor() as cursor:
-                # Delete records older than 30 days
-                cursor.execute('''
-                    DELETE FROM light 
-                    WHERE timestamp < datetime('now', '-30 days')
-                ''')
-                conn.commit()
-    except sqlite3.Error as e:
-        print(f"Error cleaning up old data: {e}")
-
 @app.route('/add', methods=['POST'])
 def add_brightness():
     light_detected = request.json['light_detected']
@@ -29,7 +16,7 @@ def add_brightness():
         with connect_db() as conn:
             with conn.cursor() as cursor:
                 cursor.execute('INSERT INTO light (light_detected) VALUES (?)', (light_detected,))
-                cleanup_old_data()
+                #cursor.execute('DELETE FROM light WHERE id = (SELECT id FROM light ORDER BY timestamp ASC LIMIT 1)')
                 conn.commit()
         return jsonify({'status': 'success'})
     except sqlite3.Error as e:
