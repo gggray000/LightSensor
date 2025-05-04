@@ -1,8 +1,10 @@
 from flask import Flask, request, jsonify, render_template
 from datetime import datetime
 from flask_cors import CORS
+from database import init_db
 import sqlite3
 import pytz
+
 app = Flask(__name__)
 CORS(app)
 
@@ -59,4 +61,5 @@ def show_data():
     return render_template('showData.html', data=data)
 
 if __name__ == '__main__':
+    init_db()
     app.run(debug=True, host='0.0.0.0')
