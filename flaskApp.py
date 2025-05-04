@@ -11,7 +11,7 @@ def connect_db():
 
 def get_time():
     tz = pytz.timezone("Europe/Berlin")
-    time_with_tz = datetime.now(tz).isoformat()
+    time_with_tz = datetime.now(tz).strftime("%Y-%m-%d %H:%M:%S")
     return time_with_tz
 
 @app.route('/add', methods=['POST'])
