@@ -1,13 +1,18 @@
 from flask import Flask, request, jsonify, render_template
-import sqlite3
-
+from datetime import datetime
 from flask_cors import CORS
-
+import sqlite3
+import pytz
 app = Flask(__name__)
 CORS(app)
 
 def connect_db():
     return sqlite3.connect('light_data.db')
+
+def get_time():
+    tz = pytz.timezone("Europe/Berlin")
+    time_with_tz = datetime.now(tz).isoformat()
+    return time_with_tz
 
 @app.route('/add', methods=['POST'])
 def add_brightness():
@@ -15,8 +20,8 @@ def add_brightness():
     try:
         conn = connect_db()
         cursor = conn.cursor()
-        cursor.execute('INSERT INTO light (light_detected) VALUES (?)', (light_detected,))
-        cursor.execute('DELETE FROM light WHERE id = (SELECT id FROM light ORDER BY timestamp ASC LIMIT 1)')
+        cursor.execute('INSERT INTO light (light_detected, timestamp) VALUES (?, ?)', (light_detected, get_time()))
+        # cursor.execute('DELETE FROM light WHERE id = (SELECT id FROM light ORDER BY timestamp ASC LIMIT 1)')
         conn.commit()
         conn.close()
         return jsonify({'status': 'success'})
