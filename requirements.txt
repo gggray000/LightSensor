@@ -11,3 +11,4 @@ zipp==3.19.2
 
 pytz~=2025.2
 ntplib~=0.4.0
+influxdb-client~=1.48.0
