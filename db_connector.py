@@ -1,7 +1,7 @@
 import os
 from datetime import datetime
 import pytz
-from influxdb_client import InfluxDBClient, Point, WritePrecision
+from influxdb_client import InfluxDBClient, Point
 
 INFLUXDB_URL = os.environ.get("INFLUXDB_URL", "http://influxdb2:8086")
 INFLUXDB_TOKEN = os.environ.get("INFLUXDB_TOKEN")
