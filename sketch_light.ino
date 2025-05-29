@@ -1,9 +1,9 @@
 #include <WiFi.h>
 #include <HTTPClient.h>
 
-const char* ssid = "dynamics";
-const char* password = "nodriver@dynamics";
-const char* serverName = "http://158.180.55.164:5000/add";
+const char* ssid = "xxx";
+const char* password = "xxx";
+const char* serverName = "xxx/add";
 
 #define DO_PIN 12
 
