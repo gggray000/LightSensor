@@ -9,7 +9,7 @@ services:
       - INFLUXDB_ORG=Dynamics
       - INFLUXDB_BUCKET=light_sensor
     depends_on:
-      - influxdb2ca
+      - influxdb2
 
   influxdb2:
     image: influxdb:2
