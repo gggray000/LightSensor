@@ -1,11 +1,12 @@
 ## Introduction
-This is a small project of integrating a light detection sensor to a microcontroller (ESP32), and display the real-time light data on web applications(Flask application and Grafana dashboard).<br><br>
+A small project of integrating a light detection sensor to a microcontroller (ESP32), and display the real-time light data on web applications(Flask application and Grafana dashboard).<br><br>
 <b>How it works:</b>
 ESP32 --- light data ---> Web server ---> Stores light data in InfluxDB ---> Flask web application and Grafana reads data from database. 
 
 ## Preview
 
 ### Webpage
+![image](https://github.com/user-attachments/assets/9ed9832e-cc38-46a8-ae54-e3992d95a734)
 ![image](https://github.com/user-attachments/assets/ff54c8dc-049b-43a5-971d-20f44a099f16)
 
 ### Grafana
